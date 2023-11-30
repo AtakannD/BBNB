@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">BBNB</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bottomNavMenu_home">Ana Sayfa</string>
+    <string name="bottomNavMenu_campaigns">Kampanyalar</string>
+    <string name="bottomNavMenu_spendingsGraph">Harcamalar Grafiği</string>
 </resources>
