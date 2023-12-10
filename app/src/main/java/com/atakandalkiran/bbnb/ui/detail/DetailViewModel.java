@@ -1,4 +1,6 @@
 package com.atakandalkiran.bbnb.ui.detail;
 
-public class DetailViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class DetailViewModel extends ViewModel {
 }

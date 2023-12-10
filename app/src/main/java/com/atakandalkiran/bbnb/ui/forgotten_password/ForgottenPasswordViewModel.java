@@ -1,4 +1,6 @@
 package com.atakandalkiran.bbnb.ui.forgotten_password;
 
-public class ForgottenPasswordViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class ForgottenPasswordViewModel extends ViewModel {
 }

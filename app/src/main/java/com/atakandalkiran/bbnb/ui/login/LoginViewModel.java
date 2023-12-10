@@ -1,4 +1,6 @@
 package com.atakandalkiran.bbnb.ui.login;
 
-public class LoginViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class LoginViewModel extends ViewModel {
 }

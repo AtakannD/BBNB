@@ -12,37 +12,19 @@
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_campaignFragment"
-            app:destination="@id/campaignFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_spendingsFragment"
-            app:destination="@id/spendingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.atakandalkiran.bbnb.ui.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
-        <action
-            android:id="@+id/action_detailFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_detail" />
     <fragment
         android:id="@+id/campaignFragment"
         android:name="com.atakandalkiran.bbnb.ui.campaign.CampaignFragment"
-        android:label="CampaignFragment" >
-        <action
-            android:id="@+id/action_campaignFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        android:label="CampaignFragment" />
     <fragment
         android:id="@+id/spendingsFragment"
         android:name="com.atakandalkiran.bbnb.ui.spendings.SpendingsFragment"
         android:label="fragment_spendings"
-        tools:layout="@layout/fragment_spendings" >
-        <action
-            android:id="@+id/action_spendingsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_spendings" />
 </navigation>

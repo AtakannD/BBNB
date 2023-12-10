@@ -1,4 +1,6 @@
 package com.atakandalkiran.bbnb.ui.spendings;
 
-public class SpendingsViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class SpendingsViewModel extends ViewModel {
 }

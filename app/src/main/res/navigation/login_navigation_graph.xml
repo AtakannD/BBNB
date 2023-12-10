@@ -2,4 +2,23 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/login_navigation_graph"/>
+    android:id="@+id/login_navigation_graph"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.atakandalkiran.bbnb.ui.login.LoginFragment"
+        android:label="LoginFragment" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.atakandalkiran.bbnb.ui.register.RegisterFragment"
+        android:label="RegisterFragment" />
+    <fragment
+        android:id="@+id/forgottenPasswordFragment"
+        android:name="com.atakandalkiran.bbnb.ui.forgotten_password.ForgottenPasswordFragment"
+        android:label="fragment_forgotten_password"
+        tools:layout="@layout/fragment_forgotten_password" />
+    <fragment
+        android:id="@+id/homeFragment2"
+        android:name="com.atakandalkiran.bbnb.ui.home.HomeFragment"
+        android:label="HomeFragment" />
+</navigation>

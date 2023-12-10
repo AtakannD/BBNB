@@ -1,4 +1,6 @@
 package com.atakandalkiran.bbnb.ui.register;
 
-public class RegisterViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class RegisterViewModel extends ViewModel {
 }
