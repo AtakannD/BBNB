@@ -1,4 +1,6 @@
 package com.atakandalkiran.bbnb.ui.campaign;
 
-public class CampaignViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class CampaignViewModel extends ViewModel {
 }

@@ -1,4 +1,6 @@
 package com.atakandalkiran.bbnb.ui.home;
 
-public class HomeViewModel {
+import androidx.lifecycle.ViewModel;
+
+public class HomeViewModel extends ViewModel {
 }
