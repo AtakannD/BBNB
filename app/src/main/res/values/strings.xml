@@ -15,4 +15,8 @@
     <string name="registerText"><u>Üye Olmak İstiyorum</u></string>
     <string name="forgetMyPasswordText"><u>Şifremi Unuttum</u></string>
     <string name="register_surname_text">Soyad</string>
+    <string name="emailValidationText">Lutfen daha onceden kayit yaptiginiz email adresini giriniz.</string>
+    <string name="emailHint">Email</string>
+    <string name="emailValidationButtonText">ONAYLA</string>
+    <string name="forgottenPasswordTextt">Şifreyi sıfırla</string>
 </resources>
