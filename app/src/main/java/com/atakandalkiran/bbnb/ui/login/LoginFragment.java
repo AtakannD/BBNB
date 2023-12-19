@@ -108,7 +108,7 @@ public class LoginFragment extends BaseFragment {
 
         if (user != null) {
             Toast.makeText(getContext(), "Giriş başarılı!", Toast.LENGTH_SHORT).show();
-            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_homeFragment2);
+            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_mainActivity);
         } else {
             Toast.makeText(getContext(), "Geçersiz T.C. Kimlik No veya Şifre.", Toast.LENGTH_SHORT).show();
         }
