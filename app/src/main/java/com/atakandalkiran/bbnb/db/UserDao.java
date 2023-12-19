@@ -2,6 +2,7 @@ package com.atakandalkiran.bbnb.db;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Insert;
 
@@ -35,5 +36,8 @@ public interface UserDao {
 
     @Query("SELECT * FROM user WHERE citizenship_no = :citizenshipNo AND password = :password")
     User getUserLoginInformations(String citizenshipNo, String password);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void changePassword(User user);
 
 }

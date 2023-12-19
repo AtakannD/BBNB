@@ -9,14 +9,14 @@
         android:name="com.atakandalkiran.bbnb.ui.login.LoginFragment"
         android:label="LoginFragment" >
         <action
-            android:id="@+id/action_loginFragment_to_homeFragment2"
-            app:destination="@id/homeFragment2" />
-        <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
         <action
             android:id="@+id/action_loginFragment_to_emailValidationFragment"
             app:destination="@id/emailValidationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -36,10 +36,6 @@
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/homeFragment2"
-        android:name="com.atakandalkiran.bbnb.ui.home.HomeFragment"
-        android:label="HomeFragment" />
-    <fragment
         android:id="@+id/emailValidationFragment"
         android:name="com.atakandalkiran.bbnb.ui.email_validation.EmailValidationFragment"
         android:label="fragment_email_validation"
@@ -48,4 +44,8 @@
             android:id="@+id/action_emailValidationFragment_to_forgottenPasswordFragment"
             app:destination="@id/forgottenPasswordFragment" />
     </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.atakandalkiran.bbnb.MainActivity"
+        android:label="MainActivity" />
 </navigation>
