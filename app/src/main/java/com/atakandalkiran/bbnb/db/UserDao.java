@@ -37,7 +37,7 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE citizenship_no = :citizenshipNo AND password = :password")
     User getUserLoginInformations(String citizenshipNo, String password);
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void changePassword(User user);
+    @Query("UPDATE user SET password = :newPassword WHERE email = :email")
+    void updatePassword(String email, String newPassword);
 
 }
