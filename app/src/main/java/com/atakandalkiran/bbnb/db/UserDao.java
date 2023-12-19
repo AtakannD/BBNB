@@ -20,4 +20,20 @@ public interface UserDao {
 
     @Delete
     void DeleteUser(User user);
+
+    @Insert
+    void InsertCardInformations(CardDetailsModel cardDetails);
+
+    @Query("SELECT * FROM carddetailsmodel")
+    List<CardDetailsModel> getAllCardInformations();
+
+    @Delete
+    void DeleteCardInformations(CardDetailsModel cardDetails);
+
+    @Query("SELECT * FROM user WHERE email = :email")
+    User getUserByEmail(String email);
+
+    @Query("SELECT * FROM user WHERE citizenship_no = :citizenshipNo AND password = :password")
+    User getUserLoginInformations(String citizenshipNo, String password);
+
 }
