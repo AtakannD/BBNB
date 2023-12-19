@@ -19,7 +19,7 @@
             android:id="@+id/ImageViewBBNB"
             android:layout_width="95dp"
             android:layout_height="112dp"
-            android:src="@drawable/bbnb_logo"
+            android:src="@drawable/logo"
             app:layout_constraintBottom_toTopOf="@+id/editTextTCKN"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,8 +33,11 @@
             android:layout_marginTop="240dp"
             android:background="@drawable/edittext_register"
             android:hint="T.C. Kimlik No"
+            android:textColor="@color/dusty_bluish_teal"
+            android:maxLength="11"
             android:padding="10dp"
             android:textSize="18sp"
+            android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,9 +58,10 @@
             app:layout_constraintVertical_bias="0.433" />
 
         <TextView
+            android:id="@+id/uyeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Üye Olmak İstiyorum"
+            android:text="@string/registerText"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -68,10 +72,10 @@
             app:layout_constraintVertical_bias="0.601" />
 
         <TextView
+            android:id="@+id/forgottenPasswordText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:text="Şifremi Unuttum"
+            android:text="@string/forgetMyPasswordText"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -81,10 +85,13 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.6" />
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/remember_button"
             android:layout_width="70dp"
             android:layout_height="50dp"
+            android:shadowColor="@color/grayish_dusty_rose"
+            app:thumbTint="@color/grayish_dusty_rose"
+            app:trackTint="@color/dusty_bluish_teal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.87"
@@ -98,7 +105,9 @@
             android:layout_height="50dp"
             android:background="@drawable/edittext_register"
             android:hint="Şifre"
-            android:inputType="textPassword"
+            android:maxLength="6"
+            android:textColor="@color/dusty_bluish_teal"
+            android:inputType="numberPassword"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -108,9 +117,13 @@
             app:layout_constraintVertical_bias="0.189" />
 
         <Button
-            android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:id="@+id/loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="GİRİŞ"
+            android:textColor="@color/grayish_dusty_rose"
+            android:backgroundTint="@color/dusty_bluish_teal"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
