@@ -19,4 +19,11 @@
     <string name="emailHint">Email</string>
     <string name="emailValidationButtonText">ONAYLA</string>
     <string name="forgottenPasswordTextt">Şifreyi sıfırla</string>
+    <string name="card_title_hint">Kart Başlığınız:</string>
+    <string name="card_title_textView">Kart Başlığı</string>
+    <string name="cardimageText">cardImage</string>
+    <string name="card_no_text">Kart Numaranız:</string>
+    <string name="usable_limit_text">Kullanılabilir Limitiniz:</string>
+    <string name="card_balance_text">Bakiyeniz:</string>
+    <string name="card_dept_text">"Borcunuz: "</string>
 </resources>
