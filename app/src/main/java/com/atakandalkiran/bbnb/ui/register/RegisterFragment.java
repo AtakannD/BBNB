@@ -104,7 +104,7 @@ public class RegisterFragment extends BaseFragment{
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(editable.length() != 11) {
+                if(editable.length() > 0 && editable.length() != 11) {
                     citizenshipNo.setError("Lütfen 11 haneli T.C. Kimlik Numaranızı giriniz.");
                 } else {
                     citizenshipNo.setError(null);
@@ -125,7 +125,9 @@ public class RegisterFragment extends BaseFragment{
                 String emailValidation = email.getText().toString().trim();
                 if(emailValidation.matches(emailPattern) && editable.length() > 0) {
                     email.setError(null);
-                } else {
+                } else if(editable.length() == 0) {
+                    email.setError(null);
+                }  else {
                     email.setError("Lütfen geçerli bir e-mail adresi giriniz.");
                 }
             }

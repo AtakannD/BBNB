@@ -12,7 +12,6 @@ import java.util.List;
 import kotlinx.parcelize.Parcelize;
 
 @Entity
-@Parcelize
 public class User implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
