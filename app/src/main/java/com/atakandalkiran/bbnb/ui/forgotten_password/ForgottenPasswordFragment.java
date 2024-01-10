@@ -25,7 +25,7 @@ import com.atakandalkiran.bbnb.ui.register.RegisterFragment;
 
 public class ForgottenPasswordFragment extends BaseFragment {
     FragmentForgottenPasswordBinding binding;
-    private EditText  newPassword, confirmNewPassword;
+    private EditText newPassword, confirmNewPassword;
 
     Button resetButton;
 
@@ -51,16 +51,20 @@ public class ForgottenPasswordFragment extends BaseFragment {
                 inflater, getLayoutResId(), container, false);
 
 
-        newPassword = binding.newPassword;
-        confirmNewPassword = binding.validation;
+        newPassword = binding.newPasswordEditText;
+        confirmNewPassword = binding.newPasswordValidationEditText;
         resetButton = binding.buton;
 
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveData();
-
-
+                if (getArguments() != null) {
+                    String email = getArguments().getString("email", "");
+                    String citizenshipNo = getArguments().getString("citizenshipNo", "");
+                    String password = newPassword.getText().toString().trim();
+                    AppDatabase.getDbInstance(getContext()).userdao().updatePassword(email, citizenshipNo, password);
+                    NavHostFragment.findNavController(ForgottenPasswordFragment.this).navigate(R.id.action_forgottenPasswordFragment_to_loginFragment);
+                }
             }
         });
 
@@ -94,17 +98,6 @@ public class ForgottenPasswordFragment extends BaseFragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
-            public void afterTextChangedPassword(Editable editable) {
-                String passwordValidation = newPassword.getText().toString().trim();
-                if(passwordValidation.matches( passwordPattern) && editable.length() == 6) {
-                    newPassword.setError(null);
-                } else if(editable.length() == 0) {
-                    newPassword.setError(null);
-                } else {
-                    newPassword.setError("Lütfen sayı tekrarı içermeyen 6 haneli şifrenizi giriniz");
-                }
-            }
-
 
             @Override
             public void afterTextChanged(Editable editable) {
@@ -128,20 +121,4 @@ public class ForgottenPasswordFragment extends BaseFragment {
     protected int getLayoutResId() {
         return R.layout.fragment_forgotten_password;
     }
-    private void saveData() {
-
-
-
-        String newPassword_txt = newPassword.getText().toString().trim();
-        String newPasswordConfirmation_txt = confirmNewPassword.getText().toString().trim();
-
-        User model = new User();
-
-
-        model.setPassword(newPassword_txt);
-
-
-
-
-}
 }

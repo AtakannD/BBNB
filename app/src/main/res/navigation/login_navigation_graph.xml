@@ -42,8 +42,16 @@
         tools:layout="@layout/fragment_email_validation" >
         <action
             android:id="@+id/action_emailValidationFragment_to_forgottenPasswordFragment"
-            app:destination="@id/forgottenPasswordFragment" />
+            app:destination="@id/forgottenPasswordFragment">
+            <argument
+                android:name="email"
+                app:argType="string" />
+            <argument
+                android:name="citizenshipNo"
+                app:argType="string" />
+        </action>
     </fragment>
+
     <activity
         android:id="@+id/mainActivity"
         android:name="com.atakandalkiran.bbnb.MainActivity"

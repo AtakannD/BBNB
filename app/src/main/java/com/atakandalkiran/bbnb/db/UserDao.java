@@ -37,7 +37,9 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE citizenship_no = :citizenshipNo AND password = :password")
     User getUserLoginInformations(String citizenshipNo, String password);
 
-    @Query("UPDATE user SET password = :newPassword WHERE email = :email")
-    void updatePassword(String email, String newPassword);
+    @Query("SELECT * FROM user WHERE citizenship_no =:citizenshipNo AND email =:email")
+    User validateUsersExistence(String citizenshipNo, String email);
 
+    @Query("UPDATE user SET password = :newPassword WHERE email = :email AND citizenship_no = :citizenshipNo")
+    void updatePassword(String email, String citizenshipNo, String newPassword);
 }
