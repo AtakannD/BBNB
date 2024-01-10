@@ -1,6 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        
+        <import type="android.view.View" />
+        
+        <variable
+            name="card"
+            type="com.atakandalkiran.bbnb.db.CardDetailsModel" />
+        <variable
+            name="clickListener"
+            type="com.atakandalkiran.bbnb.util.CardClickListener" />
+        
+    </data>
+    
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="16dp"
+        app:cardUseCompatPadding="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="@{(rootView) -> clickListener.onCardClick(rootView, card)}">
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/cardTitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{card.cardTitle}"
+                android:hint="@string/card_title_hint"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="@dimen/margin_16dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/cardImage"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardTitleText"
+                android:src="@drawable/card_image"
+                android:layout_marginStart="13dp"
+                android:contentDescription="@string/cardimageText"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cardNoText"
+                android:hint="@string/card_no_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/cardImage"
+                android:layout_marginStart="@dimen/margin_8dp"
+                app:layout_constraintTop_toBottomOf="@id/cardTitleText"
+                android:text="@{card.cardNo}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/usableLimitText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/usable_limit_text"
+                app:layout_constraintStart_toEndOf="@id/cardImage"
+                app:layout_constraintTop_toBottomOf="@id/cardNoText"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:text="@{card.usableLimit}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cardBalanceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/cardImage"
+                app:layout_constraintTop_toBottomOf="@id/usableLimitText"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:hint="@string/card_balance_text"
+                android:text="@{card.balance}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/cardDeptText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/cardImage"
+                app:layout_constraintTop_toBottomOf="@id/cardBalanceText"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:hint="@string/card_dept_text"
+                android:text="@{card.debt}"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
