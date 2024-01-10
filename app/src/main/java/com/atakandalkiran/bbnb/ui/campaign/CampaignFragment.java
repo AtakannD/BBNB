@@ -1,7 +1,15 @@
 package com.atakandalkiran.bbnb.ui.campaign;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.atakandalkiran.bbnb.R;
 import com.atakandalkiran.bbnb.data.base.BaseFragment;
 import com.atakandalkiran.bbnb.databinding.FragmentCampaignBinding;
@@ -9,9 +17,6 @@ import com.atakandalkiran.bbnb.databinding.FragmentCampaignBinding;
 public class CampaignFragment extends BaseFragment {
 
     FragmentCampaignBinding binding;
-    public CampaignFragment() {
-        // Required empty public constructor
-    }
 
     @Override
     protected void setupUI() {
@@ -19,13 +24,40 @@ public class CampaignFragment extends BaseFragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setBackground();
     }
 
     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_campaign, container, false);
+
+        Button joinButton = view.findViewById(R.id.joinButton);
+        Button joinButton1 = view.findViewById(R.id.joinButton1);
+        Button joinButton2 = view.findViewById(R.id.joinButton2);
+        Button joinButton3 = view.findViewById(R.id.joinButton3);
+
+        View.OnClickListener clickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("Kampanyaya katıldınız!");
+            }
+        };
+
+        joinButton.setOnClickListener(clickListener);
+        joinButton1.setOnClickListener(clickListener);
+        joinButton2.setOnClickListener(clickListener);
+        joinButton3.setOnClickListener(clickListener);
+
+        return view;
+    }
+    @Override
     protected int getLayoutResId() {
-        return R.layout.fragment_campaign;
+        return 0;
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 }
