@@ -52,10 +52,11 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
             app:layout_constraintHorizontal_bias="0.709"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.433" />
+            app:layout_constraintVertical_bias="0.54" />
 
         <TextView
             android:id="@+id/uyeText"
@@ -69,7 +70,7 @@
             app:layout_constraintHorizontal_bias="0.158"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.601" />
+            app:layout_constraintVertical_bias="0.60" />
 
         <TextView
             android:id="@+id/forgottenPasswordText"
@@ -83,7 +84,7 @@
             app:layout_constraintHorizontal_bias="0.847"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintVertical_bias="0.60" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/remember_button"
@@ -97,7 +98,7 @@
             app:layout_constraintHorizontal_bias="0.87"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.431" />
+            app:layout_constraintVertical_bias="0.54" />
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -114,7 +115,7 @@
             app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTCKN"
-            app:layout_constraintVertical_bias="0.189" />
+            app:layout_constraintVertical_bias="0.09" />
 
         <Button
             android:id="@+id/loginButton"
@@ -129,7 +130,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.701" />
+            app:layout_constraintVertical_bias="0.68" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

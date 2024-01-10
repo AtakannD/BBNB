@@ -21,7 +21,7 @@
             android:text="@string/emailValidationText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
+            android:layout_marginBottom="192dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <EditText
@@ -34,10 +34,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/emailValidationText"
+            app:layout_constraintTop_toBottomOf="@+id/code"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="@dimen/margin_16dp"/>
+        <EditText
+            android:id="@+id/code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_16dp"
+            android:background="@drawable/edittext_register"
+            android:textColor="@color/dusty_bluish_teal"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:hint="TC Kimlik No"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailValidationText"
+            android:layout_marginTop="16dp"
+
+            />
 
         <Button
             android:id="@+id/validationButton"

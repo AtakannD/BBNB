@@ -25,7 +25,7 @@ import com.atakandalkiran.bbnb.ui.register.RegisterFragment;
 
 public class ForgottenPasswordFragment extends BaseFragment {
     FragmentForgottenPasswordBinding binding;
-    private EditText citizenShipNo, newPassword, confirmNewPassword;
+    private EditText  newPassword, confirmNewPassword;
 
     Button resetButton;
 
@@ -50,7 +50,7 @@ public class ForgottenPasswordFragment extends BaseFragment {
         binding = DataBindingUtil.inflate(
                 inflater, getLayoutResId(), container, false);
 
-        citizenShipNo = binding.code;
+
         newPassword = binding.newPassword;
         confirmNewPassword = binding.validation;
         resetButton = binding.buton;
@@ -63,22 +63,7 @@ public class ForgottenPasswordFragment extends BaseFragment {
 
             }
         });
-        citizenShipNo.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(editable.length() != 11) {
-                    citizenShipNo.setError("Lütfen 11 haneli T.C. Kimlik Numaranızı giriniz.");
-                } else {
-                    citizenShipNo.setError(null);
-                }
-            }
-        });
         String passwordPattern = "^(?!.*(.)\\1)\\d+$";
         newPassword.addTextChangedListener(new TextWatcher() {
             @Override
@@ -109,6 +94,17 @@ public class ForgottenPasswordFragment extends BaseFragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
+            public void afterTextChangedPassword(Editable editable) {
+                String passwordValidation = newPassword.getText().toString().trim();
+                if(passwordValidation.matches( passwordPattern) && editable.length() == 6) {
+                    newPassword.setError(null);
+                } else if(editable.length() == 0) {
+                    newPassword.setError(null);
+                } else {
+                    newPassword.setError("Lütfen sayı tekrarı içermeyen 6 haneli şifrenizi giriniz");
+                }
+            }
+
 
             @Override
             public void afterTextChanged(Editable editable) {
@@ -135,25 +131,17 @@ public class ForgottenPasswordFragment extends BaseFragment {
     private void saveData() {
 
 
-        String citizenShipNo_txt = citizenShipNo.getText().toString().trim();
+
         String newPassword_txt = newPassword.getText().toString().trim();
         String newPasswordConfirmation_txt = confirmNewPassword.getText().toString().trim();
 
         User model = new User();
 
-        model.setCitizenshipNo(citizenShipNo_txt);
+
         model.setPassword(newPassword_txt);
 
-        User existingUser = AppDatabase.getDbInstance(getContext()).userdao().getUserLoginInformations( citizenShipNo_txt,newPassword_txt);
-        if (existingUser != null) {
-            Toast.makeText(getContext(), "Geçersiz TC Kimlik No", Toast.LENGTH_LONG).show();
-        } else if (citizenShipNo_txt.isEmpty() || newPassword_txt.isEmpty() || newPasswordConfirmation_txt.isEmpty()) {
-            Toast.makeText(getContext(), "Hiçbir alanı boş bırakmamalısınız.", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(getContext(), "Şifreniz sıfırlandı.", Toast.LENGTH_LONG).show();
-            AppDatabase.getDbInstance(getContext()).userdao().InsertUser(model);
-            NavHostFragment.findNavController(ForgottenPasswordFragment.this)
-                    .navigate(R.id.action_forgottenPasswordFragment_to_loginFragment);
-        }
-    }
+
+
+
+}
 }
