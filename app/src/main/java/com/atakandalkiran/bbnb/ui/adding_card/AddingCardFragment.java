@@ -69,7 +69,7 @@ public class AddingCardFragment extends BaseFragment {
                 cancellationOfCardAddingProcess();
             }
         });
-        /*
+
         cardNo.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
         cardNo.setFilters(new InputFilter[]{new InputFilter.LengthFilter(19)});
         cardNo.addTextChangedListener(new TextWatcher() {
@@ -103,10 +103,7 @@ public class AddingCardFragment extends BaseFragment {
                     }
                     formatting = false;
                 }
-            }
-        });
-
-         */
+            }});
 
         return binding.getRoot();
     }
@@ -128,13 +125,14 @@ public class AddingCardFragment extends BaseFragment {
             int userId = getArguments().getInt("userId");
             String titleTxt = titleName.getText().toString().trim();
             String cardNoTxt = cardNo.getText().toString().trim();
+
             CardDetailsModel model = new CardDetailsModel();
             model.setCardTitle(titleTxt);
             model.setUserId(userId);
             if (!TextUtils.isEmpty(cardNoTxt)) {
                 try {
-                    Long cardNumber = Long.parseLong(cardNoTxt);
-                    model.setCardNo(cardNumber);
+
+                    model.setCardNo(cardNoTxt);
                     int usableLimit = model.getUsableLimit();
                     model.setUsableLimit(usableLimit);
                     int debt = model.getDebt();
@@ -145,7 +143,7 @@ public class AddingCardFragment extends BaseFragment {
                         Bundle args = new Bundle();
                         args.putInt("userId", userId);
                         args.putString("cardTitle", titleTxt);
-                        args.putLong("cardNo", model.getCardNo());
+                        args.putString("cardNo", model.getCardNo());
                         args.putInt("usableLimit", usableLimit);
                         args.putInt("debt", debt);
                         args.putInt("balance", balance);

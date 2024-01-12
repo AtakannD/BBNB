@@ -26,4 +26,5 @@
     <string name="usable_limit_text">Kullanılabilir Limitiniz:</string>
     <string name="card_balance_text">Bakiyeniz:</string>
     <string name="card_dept_text">"Borcunuz: "</string>
+    <string name="currency_text">₺</string>
 </resources>

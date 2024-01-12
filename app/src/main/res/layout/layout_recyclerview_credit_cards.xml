@@ -75,7 +75,7 @@
                 app:layout_constraintStart_toEndOf="@id/cardNo"
                 android:layout_marginStart="2dp"
                 app:layout_constraintTop_toBottomOf="@id/cardTitleText"
-                android:text="@{String.valueOf(card.cardNo)}"/>
+                android:text="@{card.cardNo}"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/usableLimit"
@@ -90,11 +90,19 @@
                 android:id="@+id/usableLimitText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="@string/usable_limit_text"
                 app:layout_constraintStart_toEndOf="@id/usableLimit"
                 app:layout_constraintTop_toBottomOf="@id/cardNoText"
                 android:layout_marginStart="2dp"
                 android:text="@{String.valueOf(card.usableLimit)}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/usableLimitCurrencies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/usableLimitText"
+                app:layout_constraintTop_toBottomOf="@id/cardNoText"
+                android:layout_marginStart="2dp"
+                android:text="@string/currency_text" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/cardBalance"
@@ -112,8 +120,16 @@
                 app:layout_constraintStart_toEndOf="@id/cardBalance"
                 app:layout_constraintTop_toBottomOf="@id/usableLimitText"
                 android:layout_marginStart="2dp"
-                android:hint="@string/card_balance_text"
                 android:text="@{String.valueOf(card.balance)}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/balanceCurrencies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/cardBalanceText"
+                app:layout_constraintTop_toBottomOf="@id/usableLimitText"
+                android:layout_marginStart="2dp"
+                android:text="@string/currency_text" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/cardDept"
@@ -122,7 +138,7 @@
                 app:layout_constraintStart_toEndOf="@id/cardImage"
                 app:layout_constraintTop_toBottomOf="@id/cardBalanceText"
                 android:layout_marginStart="@dimen/margin_8dp"
-                android:hint="@string/card_dept_text" />
+                android:text="@string/card_dept_text" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/cardDeptText"
@@ -131,8 +147,16 @@
                 app:layout_constraintStart_toEndOf="@id/cardDept"
                 app:layout_constraintTop_toBottomOf="@id/cardBalanceText"
                 android:layout_marginStart="2dp"
-                android:hint="@string/card_dept_text"
                 android:text="@{String.valueOf(card.debt)}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/debtCurrencies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/cardDeptText"
+                app:layout_constraintTop_toBottomOf="@id/balanceCurrencies"
+                android:layout_marginStart="2dp"
+                android:text="@string/currency_text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
