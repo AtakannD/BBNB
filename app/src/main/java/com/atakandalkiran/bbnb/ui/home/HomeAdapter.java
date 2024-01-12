@@ -3,6 +3,7 @@ package com.atakandalkiran.bbnb.ui.home;
 import android.annotation.SuppressLint;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
@@ -17,17 +18,18 @@ public class HomeAdapter extends ListAdapter<CardDetailsModel, CardItemViewHolde
     private final CardClickListener clickListener;
 
     public HomeAdapter(CardClickListener clickListener) {
-        super(new CountriesItemDiffCallback());
+        super(new CardItemDiffCallback());
         this.clickListener = clickListener;
     }
 
+    @NonNull
     @Override
-    public CardItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CardItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return CardItemViewHolder.from(parent);
     }
 
     @Override
-    public void onCurrentListChanged(List<CardDetailsModel> previousList, List<CardDetailsModel> currentList) {
+    public void onCurrentListChanged(@NonNull List<CardDetailsModel> previousList, @NonNull List<CardDetailsModel> currentList) {
         super.onCurrentListChanged(previousList, currentList);
         clickListener.onCurrentChanged();
     }
@@ -38,7 +40,7 @@ public class HomeAdapter extends ListAdapter<CardDetailsModel, CardItemViewHolde
     }
 }
 
-class CountriesItemDiffCallback extends DiffUtil.ItemCallback<CardDetailsModel> {
+class CardItemDiffCallback extends DiffUtil.ItemCallback<CardDetailsModel> {
     @Override
     public boolean areItemsTheSame(CardDetailsModel oldItem, CardDetailsModel newItem) {
         return oldItem.getCardTitle().equals(newItem.getCardTitle());
@@ -46,7 +48,7 @@ class CountriesItemDiffCallback extends DiffUtil.ItemCallback<CardDetailsModel> 
 
     @SuppressLint("DiffUtilEquals")
     @Override
-    public boolean areContentsTheSame(CardDetailsModel oldItem, CardDetailsModel newItem) {
+    public boolean areContentsTheSame(CardDetailsModel oldItem, @NonNull CardDetailsModel newItem) {
         return oldItem.equals(newItem);
     }
 }

@@ -106,9 +106,12 @@ public class LoginFragment extends BaseFragment {
 
         User user = AppDatabase.getDbInstance(getContext()).userdao().getUserLoginInformations(citizenshipNo, password);
 
+
         if (user != null) {
             Toast.makeText(getContext(), "Giriş başarılı!", Toast.LENGTH_SHORT).show();
-            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_mainActivity);
+            Bundle args = new Bundle();
+            args.putInt("userId", user.userId);
+            NavHostFragment.findNavController(LoginFragment.this).navigate(R.id.action_loginFragment_to_mainActivity, args);
         } else {
             Toast.makeText(getContext(), "Geçersiz T.C. Kimlik No veya Şifre.", Toast.LENGTH_SHORT).show();
         }

@@ -55,6 +55,4 @@ public class AddingNewUser extends AppCompatActivity {
         AppDatabase.getDbInstance(getApplicationContext()).userdao().InsertUser(model);
 
         Toast.makeText(this, "Data Successfully Saved", Toast.LENGTH_SHORT).show();
-
-
     }}

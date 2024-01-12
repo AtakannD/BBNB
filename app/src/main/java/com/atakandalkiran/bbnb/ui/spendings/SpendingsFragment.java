@@ -12,6 +12,7 @@ import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
+import com.anychart.charts.Cartesian3d;
 import com.anychart.charts.Pie;
 import com.anychart.enums.Align;
 import com.anychart.enums.LegendLayout;
@@ -42,6 +43,7 @@ public class SpendingsFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_spendings, container, false);
 
         AnyChartView anyChartView = view.findViewById(R.id.anyChartView);
+
         setupPieChart(anyChartView);
 
         return view;

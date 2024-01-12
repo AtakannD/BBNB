@@ -8,9 +8,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverters;
-
-import java.util.Date;
 import java.util.Random;
 
 import kotlinx.parcelize.Parcelize;
@@ -34,7 +31,7 @@ public class CardDetailsModel implements Parcelable {
     private String cardTitle;
 
     @ColumnInfo(name = "card_no")
-    private Integer cardNo;
+    private Long cardNo;
 
     @ColumnInfo(name = "usable_limit")
     private Integer usableLimit;
@@ -45,17 +42,6 @@ public class CardDetailsModel implements Parcelable {
     @ColumnInfo(name = "debt")
     private Integer debt;
 
-    @ColumnInfo(name = "expire_date")
-    @TypeConverters(Converters.class)
-    private Date expireDate;
-
-    public Date getExpireDate() {
-        return expireDate;
-    }
-
-    public void setExpireDate(Date expireDate) {
-        this.expireDate = expireDate;
-    }
 
     public int getCardId() {
         return cardId;
@@ -81,11 +67,11 @@ public class CardDetailsModel implements Parcelable {
         this.cardTitle = cardTitle;
     }
 
-    public Integer getCardNo() {
+    public Long getCardNo() {
         return cardNo;
     }
 
-    public void setCardNo(Integer cardNo) {
+    public void setCardNo(Long cardNo) {
         this.cardNo = cardNo;
     }
 
@@ -138,7 +124,7 @@ public class CardDetailsModel implements Parcelable {
         if (in.readByte() == 0) {
             cardNo = null;
         } else {
-            cardNo = in.readInt();
+            cardNo = in.readLong(); // Use readInt() for Integer
         }
         if (in.readByte() == 0) {
             usableLimit = null;
@@ -155,8 +141,6 @@ public class CardDetailsModel implements Parcelable {
         } else {
             debt = in.readInt();
         }
-        long tmpExpireDate = in.readLong();
-        expireDate = tmpExpireDate == -1 ? null : new Date(tmpExpireDate);
     }
 
     public static final Creator<CardDetailsModel> CREATOR = new Creator<CardDetailsModel>() {
@@ -180,7 +164,7 @@ public class CardDetailsModel implements Parcelable {
             dest.writeByte((byte) 0);
         } else {
             dest.writeByte((byte) 1);
-            dest.writeLong(cardNo);
+            dest.writeLong(cardNo); // Use writeInt() for Integer
         }
         if (usableLimit == null) {
             dest.writeByte((byte) 0);
@@ -200,7 +184,6 @@ public class CardDetailsModel implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeInt(debt);
         }
-        dest.writeLong(expireDate != null ? expireDate.getTime() : -1);
     }
 
     @Override

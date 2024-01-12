@@ -29,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.navHostFragment);
         NavController navController = Objects.requireNonNull(navHostFragment).getNavController();
+
+        int userId = getIntent().getIntExtra("userId", 0);
+
+        Bundle args = new Bundle();
+        args.putInt("userId", userId);
+
+        navController.navigate(R.id.homeFragment, args);
+
         NavigationUI.setupWithNavController(binding.bottomNavigationBar, navController);
     }
 }
