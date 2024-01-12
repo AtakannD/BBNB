@@ -2,23 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/spendingsFragmentConstraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="16dp"
-        tools:context=".ui.spendings.SpendingsFragment">
+    android:id="@+id/spendingsFragmentConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    tools:context=".ui.spendings.SpendingsFragment">
 
 
     <com.anychart.AnyChartView
-    android:id="@+id/anyChartView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+        android:id="@+id/anyChartView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        />
 
 
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 

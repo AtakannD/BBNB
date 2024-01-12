@@ -11,7 +11,7 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_deneme">DenemeActivity</string>
     <string name="logo">BBNB</string>
-    <string name="home_header">Credit Cards</string>
+    <string name="home_header">Kredi Kartlarınız</string>
     <string name="registerText"><u>Üye Olmak İstiyorum</u></string>
     <string name="forgetMyPasswordText"><u>Şifremi Unuttum</u></string>
     <string name="register_surname_text">Soyad</string>
