@@ -53,7 +53,7 @@
                 app:argType="string" />
             <argument
                 android:name="cardNo"
-                app:argType="long" />
+                app:argType="string" />
             <argument
                 android:name="usableLimit"
                 app:argType="integer"/>

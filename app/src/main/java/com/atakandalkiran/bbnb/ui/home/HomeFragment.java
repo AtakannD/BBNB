@@ -60,7 +60,12 @@ public class HomeFragment extends BaseFragment implements CardClickListener {
 
         if (viewModel != null && viewModel.getCardPropertiesLiveData() != null) {
             viewModel.getCardPropertiesLiveData().observe(getViewLifecycleOwner(), cardDetailsList -> {
-                adapter.submitList(cardDetailsList);
+                if (cardDetailsList.isEmpty()) {
+                    binding.cardViewRV.setVisibility(View.INVISIBLE);
+                } else {
+                    binding.cardViewRV.setVisibility(View.VISIBLE);
+                    adapter.submitList(cardDetailsList);
+                }
             });
         }
 

@@ -31,7 +31,7 @@ public class CardDetailsModel implements Parcelable {
     private String cardTitle;
 
     @ColumnInfo(name = "card_no")
-    private Long cardNo;
+    private String cardNo;
 
     @ColumnInfo(name = "usable_limit")
     private Integer usableLimit;
@@ -67,11 +67,11 @@ public class CardDetailsModel implements Parcelable {
         this.cardTitle = cardTitle;
     }
 
-    public Long getCardNo() {
+    public String getCardNo() {
         return cardNo;
     }
 
-    public void setCardNo(Long cardNo) {
+    public void setCardNo(String cardNo) {
         this.cardNo = cardNo;
     }
 
@@ -124,7 +124,7 @@ public class CardDetailsModel implements Parcelable {
         if (in.readByte() == 0) {
             cardNo = null;
         } else {
-            cardNo = in.readLong(); // Use readInt() for Integer
+            cardNo = in.readString(); // Use readInt() for Integer
         }
         if (in.readByte() == 0) {
             usableLimit = null;
@@ -164,7 +164,7 @@ public class CardDetailsModel implements Parcelable {
             dest.writeByte((byte) 0);
         } else {
             dest.writeByte((byte) 1);
-            dest.writeLong(cardNo); // Use writeInt() for Integer
+            dest.writeString(cardNo); // Use writeInt() for Integer
         }
         if (usableLimit == null) {
             dest.writeByte((byte) 0);
