@@ -53,13 +53,13 @@ public class SpendingsFragment extends BaseFragment {
         Pie pie = AnyChart.pie();
 
         List<DataEntry> data = new ArrayList<>();
-        data.add(new ValueDataEntry("Akaryakıt", 20));
-        data.add(new ValueDataEntry("Eğitim", 15));
-        data.add(new ValueDataEntry("Giyim", 10));
-        data.add(new ValueDataEntry("Market", 25));
-        data.add(new ValueDataEntry("Sağlık", 5));
-        data.add(new ValueDataEntry("Yemek", 15));
-        data.add(new ValueDataEntry("Diğer", 10));
+        data.add(new ValueDataEntry("Akaryakıt", 2300));
+        data.add(new ValueDataEntry("Eğitim", 12000));
+        data.add(new ValueDataEntry("Giyim", 1700));
+        data.add(new ValueDataEntry("Market", 1100));
+        data.add(new ValueDataEntry("Sağlık", 4110));
+        data.add(new ValueDataEntry("Yemek", 360));
+        data.add(new ValueDataEntry("Diğer", 700));
 
         pie.data(data);
         pie.palette(renkler);
