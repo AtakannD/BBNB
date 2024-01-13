@@ -16,6 +16,7 @@ import java.util.List;
 public class HomeAdapter extends ListAdapter<CardDetailsModel, CardItemViewHolder> {
 
     private final CardClickListener clickListener;
+    private CardClickListener deleteButtonClickListener;
 
     public HomeAdapter(CardClickListener clickListener) {
         super(new CardItemDiffCallback());
@@ -36,7 +37,11 @@ public class HomeAdapter extends ListAdapter<CardDetailsModel, CardItemViewHolde
 
     @Override
     public void onBindViewHolder(CardItemViewHolder holder, int position) {
-        holder.bind(clickListener, getItem(position));
+        holder.bind(clickListener, deleteButtonClickListener, getItem(position));
+    }
+
+    public void setDeleteButtonClickListener(CardClickListener listener) {
+        this.deleteButtonClickListener = listener;
     }
 }
 

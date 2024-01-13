@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,12 +26,11 @@ import com.atakandalkiran.bbnb.db.UserDao;
 import com.atakandalkiran.bbnb.util.CardClickListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.Objects;
-
 public class HomeFragment extends BaseFragment implements CardClickListener {
 
     FragmentHomeBinding binding;
     RecyclerView recyclerView;
+    ImageButton delete;
 
     private HomeAdapter adapter;
 
@@ -60,6 +59,18 @@ public class HomeFragment extends BaseFragment implements CardClickListener {
             viewModel = new ViewModelProvider(this, new HomeViewModelFactory(requireContext(), userId, userDao))
                     .get(HomeViewModel.class);
         }
+        adapter.setDeleteButtonClickListener(new CardClickListener() {
+            @Override
+            public void onCardClick(View view, CardDetailsModel cardDetails) {}
+
+            @Override
+            public void onDeleteButtonClicked(CardDetailsModel cardDetails) {
+                viewModel.deleteSavedCard(cardDetails);
+            }
+
+            @Override
+            public void onCurrentChanged() {}
+        });
 
         if (viewModel != null && viewModel.getCardPropertiesLiveData() != null) {
             viewModel.getCardPropertiesLiveData().observe(getViewLifecycleOwner(), cardDetailsList -> {
@@ -123,6 +134,9 @@ public class HomeFragment extends BaseFragment implements CardClickListener {
             NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_homeFragment_to_detailFragment, args);
         }
     }
+
+    @Override
+    public void onDeleteButtonClicked(CardDetailsModel cardDetails) {}
 
     public void logoutProcess(Context context) {
         if(getArguments() != null) {

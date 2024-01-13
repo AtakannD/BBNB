@@ -1,12 +1,14 @@
 package com.atakandalkiran.bbnb.ui.spendings;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
@@ -25,11 +27,12 @@ import java.util.List;
 
 public class SpendingsFragment extends BaseFragment {
 
+    FragmentSpendingsBinding binding;
+
     String[] renkler = {"#86C8CD", "#6DB2C8", "#40698E", "#415771", "#B4A0AC", "#619ba1", "#5499a4"};
     public SpendingsFragment() {
         // Required empty public constructor
     }
-    FragmentSpendingsBinding binding;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -40,26 +43,26 @@ public class SpendingsFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_spendings, container, false);
+        binding = DataBindingUtil.inflate(inflater, getLayoutResId(), container, false);
 
-        AnyChartView anyChartView = view.findViewById(R.id.anyChartView);
+        AnyChartView anyChartView = binding.anyChartView;
 
         setupPieChart(anyChartView);
 
-        return view;
+        return binding.getRoot();
     }
 
     private void setupPieChart(AnyChartView anyChartView) {
         Pie pie = AnyChart.pie();
-
+        anyChartView.setBackgroundColor(getResources().getColor(R.color.grayish_dusty_rose));
         List<DataEntry> data = new ArrayList<>();
         data.add(new ValueDataEntry("Akaryakıt", 2300));
-        data.add(new ValueDataEntry("Eğitim", 12000));
+        data.add(new ValueDataEntry("Eğitim", 5000));
         data.add(new ValueDataEntry("Giyim", 1700));
         data.add(new ValueDataEntry("Market", 1100));
         data.add(new ValueDataEntry("Sağlık", 4110));
-        data.add(new ValueDataEntry("Yemek", 360));
-        data.add(new ValueDataEntry("Diğer", 700));
+        data.add(new ValueDataEntry("Yemek", 850));
+        data.add(new ValueDataEntry("Diğer", 900));
 
         pie.data(data);
         pie.palette(renkler);
