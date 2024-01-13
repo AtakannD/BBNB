@@ -36,6 +36,7 @@ public class LoginFragment extends BaseFragment {
     private EditText editTextTCKN, editTextPassword;
     private LoginViewModel loginViewModel;
     private static final String PREFS_NAME = "MyPrefsFile";
+    SwitchCompat rememberSwitch;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class LoginFragment extends BaseFragment {
         TextView forgottenPasswordText = binding.forgottenPasswordText;
 
         Button loginButton = binding.loginButton;
-        SwitchCompat rememberSwitch = binding.rememberButton;
+        rememberSwitch = binding.rememberButton;
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +89,7 @@ public class LoginFragment extends BaseFragment {
                 } else {
                     clearSavedTCKN();
                 }
+                // Move saveRememberStatus here
                 saveRememberStatus(isChecked);
             }
         });
@@ -153,7 +155,14 @@ public class LoginFragment extends BaseFragment {
         SharedPreferences preferences = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("rememberMe", true);
-        editor.putString("savedTCKN", editTextTCKN.getText().toString());
+
+        // Check if the switch is checked before saving the TCKN
+        if (rememberSwitch.isChecked()) {
+            editor.putString("savedTCKN", editTextTCKN.getText().toString());
+        } else {
+            editor.remove("savedTCKN");
+        }
+
         editor.apply();
     }
 
