@@ -90,16 +90,19 @@ public class AddingCardFragment extends BaseFragment {
 
                     String cardNumber = editable.toString().replaceAll("\\s", "");
 
-                    if (cardNumber.length() > 0) {
+                    if (cardNumber.length() > 0 && cardNumber.length() != 16) {
                         StringBuilder formattedCardNumber = new StringBuilder(cardNumber);
                         for (int i = 4; i < cardNumber.length(); i += 5) {
                             formattedCardNumber.insert(i, " ");
                         }
+                        cardNo.setError("Lütfen 16 haneli kart numaranızı giriniz.");
 
                         if (!TextUtils.equals(cardNumber, formattedCardNumber.toString())) {
                             cardNo.setText(formattedCardNumber.toString());
                             cardNo.setSelection(formattedCardNumber.length());
                         }
+                    } else {
+                        cardNo.setError(null);
                     }
                     formatting = false;
                 }
