@@ -1,5 +1,7 @@
 package com.atakandalkiran.bbnb.ui.home;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.atakandalkiran.bbnb.EntranceActivity;
 import com.atakandalkiran.bbnb.R;
 import com.atakandalkiran.bbnb.data.base.BaseFragment;
 import com.atakandalkiran.bbnb.databinding.FragmentHomeBinding;
@@ -62,8 +65,10 @@ public class HomeFragment extends BaseFragment implements CardClickListener {
             viewModel.getCardPropertiesLiveData().observe(getViewLifecycleOwner(), cardDetailsList -> {
                 if (cardDetailsList.isEmpty()) {
                     binding.cardViewRV.setVisibility(View.INVISIBLE);
+                    binding.thereIsNoCardText.setVisibility(View.VISIBLE);
                 } else {
                     binding.cardViewRV.setVisibility(View.VISIBLE);
+                    binding.thereIsNoCardText.setVisibility(View.INVISIBLE);
                     adapter.submitList(cardDetailsList);
                 }
             });
@@ -78,6 +83,14 @@ public class HomeFragment extends BaseFragment implements CardClickListener {
                     args.putInt("userId", userId);
                     NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_homeFragment_to_addingCardFragment, args);
                 }
+            }
+        });
+
+        binding.logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = getContext();
+                logoutProcess(context);
             }
         });
 
@@ -102,11 +115,32 @@ public class HomeFragment extends BaseFragment implements CardClickListener {
 
     @Override
     public void onCardClick(View view, CardDetailsModel cardDetails) {
-        NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_homeFragment_to_detailFragment);
+        if(getArguments() != null) {
+            int userId = getArguments().getInt("userId", 0);
+            Bundle args = new Bundle();
+            args.putInt("userId", userId);
+            args.putParcelable("cardDetails", cardDetails);
+            NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_homeFragment_to_detailFragment, args);
+        }
+    }
+
+    public void logoutProcess(Context context) {
+        if(getArguments() != null) {
+            int userId = getArguments().getInt("userId", 0);
+            Bundle args = new Bundle();
+            args.putInt("userId", userId);
+            Intent intent = new Intent(context, EntranceActivity.class);
+            context.startActivity(intent);
+        }
     }
 
     @Override
     public void onCurrentChanged() {
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

@@ -27,4 +27,7 @@
     <string name="card_balance_text">Bakiyeniz:</string>
     <string name="card_dept_text">"Borcunuz: "</string>
     <string name="currency_text">₺</string>
+    <string name="spendings_text">Dönem İçi Hareketleriniz</string>
+    <string name="card_details_txt">Kart Detaylarınız</string>
+    <string name="there_is_no_card_text">Şuanda herhangi bir kredi kartınız yok. \n Sağ altta bulunan kart ekleme butonunu kullanabilirsiniz.</string>
 </resources>
