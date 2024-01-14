@@ -20,13 +20,14 @@ import com.atakandalkiran.bbnb.data.base.BaseFragment;
 import com.atakandalkiran.bbnb.databinding.FragmentRegisterBinding;
 import com.atakandalkiran.bbnb.db.AppDatabase;
 import com.atakandalkiran.bbnb.db.User;
+import com.atakandalkiran.bbnb.ui.home.HomeFragment;
 import com.atakandalkiran.bbnb.ui.login.LoginFragment;
 
 public class RegisterFragment extends BaseFragment{
 
     FragmentRegisterBinding binding;
     private EditText name, surname, phone, email, citizenshipNo,password, confirmPassword;
-    Button save;
+    Button save, cancel;
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -49,10 +50,19 @@ public class RegisterFragment extends BaseFragment{
         password = binding.editTextPassword;
         confirmPassword = binding.editTextConfirmPassword;
         save = binding.buttonRegister;
+        cancel = binding.cancelButton;
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveData();
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Giriş ekranına yönlendiriliyorsunuz.", Toast.LENGTH_SHORT).show();
+                NavHostFragment.findNavController(RegisterFragment.this).navigate(R.id.action_registerFragment_to_loginFragment);
             }
         });
         String namePattern = "^[a-zA-ZıİğĞüÜşŞöÖçÇ]+(?:\\s[a-zA-ZıİğĞüÜşŞöÖçÇ]+)?$";
