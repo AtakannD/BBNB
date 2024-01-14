@@ -54,7 +54,7 @@ public class SpendingsFragment extends BaseFragment {
 
     private void setupPieChart(AnyChartView anyChartView) {
         Pie pie = AnyChart.pie();
-        anyChartView.setBackgroundColor(getResources().getColor(R.color.grayish_dusty_rose));
+
         List<DataEntry> data = new ArrayList<>();
         data.add(new ValueDataEntry("Akaryakıt", 2300));
         data.add(new ValueDataEntry("Eğitim", 5000));
@@ -67,9 +67,15 @@ public class SpendingsFragment extends BaseFragment {
         pie.data(data);
         pie.palette(renkler);
         pie.sort("asc");
+        pie.tooltip().title("Aylık Harcama");
+        pie.tooltip().format("Harcama Miktarı: {%value} TL // Kategori: {%x}");
+
+        pie.title("Aylık Harcama Grafiği");
 
         pie.legend()
                 .itemsLayout(LegendLayout.VERTICAL);
+
+
 
         anyChartView.setChart(pie);
     }

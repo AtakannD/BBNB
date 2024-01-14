@@ -38,10 +38,14 @@ public class CampaignFragment extends BaseFragment {
         Button joinButton2 = view.findViewById(R.id.joinButton2);
         Button joinButton3 = view.findViewById(R.id.joinButton3);
 
+        final String buttonText = "Kampanyaya Katıldınız!";
+
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast("Kampanyaya katıldınız!");
+                showToast(buttonText);
+                ((Button) v).setText("Kampanyaya Katıldınız");
+                ((Button) v).setEnabled(false);
             }
         };
 
