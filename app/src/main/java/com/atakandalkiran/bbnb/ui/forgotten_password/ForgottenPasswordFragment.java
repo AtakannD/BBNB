@@ -27,7 +27,7 @@ public class ForgottenPasswordFragment extends BaseFragment {
     FragmentForgottenPasswordBinding binding;
     private EditText newPassword, confirmNewPassword;
 
-    Button resetButton;
+    Button resetButton, cancel;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -54,19 +54,34 @@ public class ForgottenPasswordFragment extends BaseFragment {
         newPassword = binding.newPasswordEditText;
         confirmNewPassword = binding.newPasswordValidationEditText;
         resetButton = binding.buton;
+        cancel = binding.cancelButton;
 
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (getArguments() != null) {
+                String passwordString = newPassword.getText().toString().trim();
+                String confirmPasswordString = confirmNewPassword.getText().toString().trim();
+                if (getArguments() != null && !passwordString.isEmpty() && !confirmPasswordString.isEmpty()) {
                     String email = getArguments().getString("email", "");
                     String citizenshipNo = getArguments().getString("citizenshipNo", "");
                     String password = newPassword.getText().toString().trim();
                     AppDatabase.getDbInstance(getContext()).userdao().updatePassword(email, citizenshipNo, password);
+                    Toast.makeText(getContext(), "Şifre değiştirme işleminiz başarıyla gerçekleşmiştir. Ana sayfaya yönlendiriliyorsunuz.", Toast.LENGTH_SHORT).show();
                     NavHostFragment.findNavController(ForgottenPasswordFragment.this).navigate(R.id.action_forgottenPasswordFragment_to_loginFragment);
+                } else {
+                    Toast.makeText(getContext(), "Hiçbir alanı boş bırakmamalısınız.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Şifre değiştirme talebiniz iptal edilmiştir. Ana sayfaya yönlendiriliyorsunuz.", Toast.LENGTH_SHORT).show();
+                NavHostFragment.findNavController(ForgottenPasswordFragment.this).navigate(R.id.action_forgottenPasswordFragment_to_loginFragment);
+            }
+        });
+
 
         String passwordPattern = "^(?!.*(.)\\1)\\d+$";
         newPassword.addTextChangedListener(new TextWatcher() {
@@ -79,9 +94,7 @@ public class ForgottenPasswordFragment extends BaseFragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 String passwordValidation = newPassword.getText().toString().trim();
-                if(passwordValidation.matches(passwordPattern) && editable.length() == 6) {
-                    newPassword.setError(null);
-                } else if(editable.length() == 0) {
+                if(passwordValidation.matches(passwordPattern) && editable.length() == 6 && editable.length() == 0) {
                     newPassword.setError(null);
                 } else {
                     newPassword.setError("Lütfen sayı tekrarı içermeyen 6 haneli şifrenizi giriniz");
