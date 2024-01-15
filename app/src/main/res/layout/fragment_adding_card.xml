@@ -12,6 +12,18 @@
         android:layout_height="match_parent"
         android:background="#415771"
         tools:context=".ui.adding_card.AddingCardFragment">
+
+        <ImageView
+            android:id="@+id/logoImage"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/logo"
+            android:layout_marginTop="@dimen/margin_16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/cardDetailText"
             android:layout_width="match_parent"

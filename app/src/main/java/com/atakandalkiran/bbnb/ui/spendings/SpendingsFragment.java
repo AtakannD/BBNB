@@ -67,8 +67,8 @@ public class SpendingsFragment extends BaseFragment {
         pie.data(data);
         pie.palette(renkler);
         pie.sort("asc");
-        pie.tooltip().title("Aylık Harcama");
-        pie.tooltip().format("Harcama Miktarı: {%value} TL // Kategori: {%x}");
+        pie.tooltip().titleFormat("Kategori: {%x}")
+                .format("Harcama Miktarı: {%value} TL");
 
         pie.title("Aylık Harcama Grafiği");
 
