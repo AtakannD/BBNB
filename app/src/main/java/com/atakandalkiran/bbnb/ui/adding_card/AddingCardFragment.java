@@ -58,8 +58,11 @@ public class AddingCardFragment extends BaseFragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveCardDetails();
-
+                if(cardNo.getError() != null) {
+                    Toast.makeText(getContext(), "Lütfen talimatlarımızı dikkate alınız.", Toast.LENGTH_SHORT).show();
+                } else {
+                    saveCardDetails();
+                }
             }
         });
 
