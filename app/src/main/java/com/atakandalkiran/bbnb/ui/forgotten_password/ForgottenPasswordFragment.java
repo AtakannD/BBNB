@@ -62,12 +62,16 @@ public class ForgottenPasswordFragment extends BaseFragment {
                 String passwordString = newPassword.getText().toString().trim();
                 String confirmPasswordString = confirmNewPassword.getText().toString().trim();
                 if (getArguments() != null && !passwordString.isEmpty() && !confirmPasswordString.isEmpty()) {
-                    String email = getArguments().getString("email", "");
-                    String citizenshipNo = getArguments().getString("citizenshipNo", "");
-                    String password = newPassword.getText().toString().trim();
-                    AppDatabase.getDbInstance(getContext()).userdao().updatePassword(email, citizenshipNo, password);
-                    Toast.makeText(getContext(), "Şifre değiştirme işleminiz başarıyla gerçekleşmiştir. Ana sayfaya yönlendiriliyorsunuz.", Toast.LENGTH_SHORT).show();
-                    NavHostFragment.findNavController(ForgottenPasswordFragment.this).navigate(R.id.action_forgottenPasswordFragment_to_loginFragment);
+                    if(newPassword.getError() != null || confirmNewPassword.getError() != null) {
+                        Toast.makeText(getContext(), "Lütfen talimatları dikkate alınız.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        String email = getArguments().getString("email", "");
+                        String citizenshipNo = getArguments().getString("citizenshipNo", "");
+                        String password = newPassword.getText().toString().trim();
+                        AppDatabase.getDbInstance(getContext()).userdao().updatePassword(email, citizenshipNo, password);
+                        Toast.makeText(getContext(), "Şifre değiştirme işleminiz başarıyla gerçekleşmiştir. Ana sayfaya yönlendiriliyorsunuz.", Toast.LENGTH_SHORT).show();
+                        NavHostFragment.findNavController(ForgottenPasswordFragment.this).navigate(R.id.action_forgottenPasswordFragment_to_loginFragment);
+                    }
                 } else {
                     Toast.makeText(getContext(), "Hiçbir alanı boş bırakmamalısınız.", Toast.LENGTH_SHORT).show();
                 }

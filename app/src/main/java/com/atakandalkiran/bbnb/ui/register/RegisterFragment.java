@@ -54,7 +54,12 @@ public class RegisterFragment extends BaseFragment{
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveData();
+                if(name.getError() != null || surname.getError() != null || email.getError() != null ||
+                        phone.getError() != null  || password.getError() != null || confirmPassword.getError() != null) {
+                    Toast.makeText(getContext(), "Lütfen girdiğiniz bilgilerin doğruluğunu kontrol edin.", Toast.LENGTH_SHORT).show();
+                } else {
+                    saveData();
+                }
             }
         });
 
