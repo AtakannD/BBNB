@@ -94,7 +94,7 @@ public class ForgottenPasswordFragment extends BaseFragment {
             @Override
             public void afterTextChanged(Editable editable) {
                 String passwordValidation = newPassword.getText().toString().trim();
-                if(passwordValidation.matches(passwordPattern) && editable.length() == 6 && editable.length() == 0) {
+                if(passwordValidation.matches(passwordPattern) && editable.length() == 6 || editable.length() == 0) {
                     newPassword.setError(null);
                 } else {
                     newPassword.setError("Lütfen sayı tekrarı içermeyen 6 haneli şifrenizi giriniz");
