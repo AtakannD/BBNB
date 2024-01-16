@@ -29,7 +29,7 @@ public class SpendingsFragment extends BaseFragment {
 
     FragmentSpendingsBinding binding;
 
-    String[] renkler = {"#86C8CD", "#6DB2C8", "#40698E", "#415771", "#B4A0AC", "#619ba1", "#5499a4"};
+    String[] renkler = {"#86C8CD", "#5499a4", "#6DB2C8", "#40698E", "#415771", "#B4A0AC", "#619ba1"};
     public SpendingsFragment() {
         // Required empty public constructor
     }
