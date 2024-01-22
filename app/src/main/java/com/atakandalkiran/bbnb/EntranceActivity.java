@@ -11,6 +11,11 @@ public class EntranceActivity extends AppCompatActivity {
     
     private ActivityEntranceBinding binding;
 
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
